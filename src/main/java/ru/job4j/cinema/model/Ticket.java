@@ -11,9 +11,15 @@ public class Ticket {
     private Session filmSession; // сеанс
     private int row; // ряд
     private int cell; // место
+    private boolean isBought;
     private User user;
 
     public Ticket() {
+        this.id = 0;
+        this.filmSession = new Session();
+        this.row = 0;
+        this.cell = 0;
+        this.user = new User();
     }
 
     public Ticket(int id, Session filmSession, int row, int cell, User user) {
@@ -46,6 +52,14 @@ public class Ticket {
 
     public void setRow(int row) {
         this.row = row;
+    }
+
+    public boolean isBought() {
+        return isBought;
+    }
+
+    public void setBought(boolean bought) {
+        isBought = bought;
     }
 
     public int getCell() {
