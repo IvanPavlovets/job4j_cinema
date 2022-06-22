@@ -17,15 +17,6 @@ import javax.servlet.http.HttpSession;
 public class IndexControl {
 
     /**
-     * Работа с TickeDBStore через промежуточный слой TicketService
-     */
-    private final TicketService ticketService;
-
-    public IndexControl(TicketService ticketService) {
-        this.ticketService = ticketService;
-    }
-
-    /**
      * Обрабатывает переход на главную страницу index.html
      * Spring создаст сам этот обьект и загрузит его данные
      * в предсавлении (html странице).
@@ -44,17 +35,4 @@ public class IndexControl {
         return "index";
     }
 
-    /**
-     * Обрабатывает добавление данных в post
-     * и их сохранение в store.
-     * Города в обьекте post не имеют имени,
-     * поэтому достаем его из славоря через службу.
-     * @param ticket
-     * @return String
-     */
-    @PostMapping("/createTicket")
-    public String createTicket(@ModelAttribute Ticket ticket) {
-        ticketService.create(ticket);
-        return "redirect:/payment";
-    }
 }

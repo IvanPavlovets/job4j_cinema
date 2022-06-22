@@ -24,6 +24,26 @@ public class UserController {
         this.userService = userService;
     }
 
+
+    /**
+     * Обрабатывает переход на главную страницу personalInfo.html
+     * Spring создаст сам этот обьект и загрузит его данные
+     * в предсавлении (html странице).
+     * @param model
+     * @param session
+     * @return String
+     */
+    @GetMapping("/personlInfo")
+    public String personlInfo(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            user = new User();
+            user.setUserName("Гость");
+        }
+        model.addAttribute("user", user);
+        return "personlInfo";
+    }
+
     /**
      * загружает страницу addUser.html.
      * - Параметр fail создаеться для отработки

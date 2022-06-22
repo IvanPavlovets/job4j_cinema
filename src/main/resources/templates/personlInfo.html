@@ -24,9 +24,9 @@
 <div class="container">
 
     <nav class="nav nav-tabs">
-        <a class="nav-item nav-link active" href="#">Афиша</a>
+        <a class="nav-item nav-link" th:href="@{/index}">Афиша</a>
         <a class="nav-item nav-link" th:href="@{/hall}">Кинотеатр</a>
-        <a class="nav-item nav-link" th:href="@{/personlInfo}">Личный Кабинет</a>
+        <a class="nav-item nav-link active" href="#">Личный Кабинет</a>
         <a class="nav-item nav-link" th:if="${user.userName == 'Гость'}" th:href="@{/loginPage}">
             <span th:text="${user.userName}"></span>
             <span> | Войти</span>
@@ -38,47 +38,18 @@
     </nav>
 
     <div class="row pt-3">
-        <h2>
-            СЕГОДНЯ НА ЭКРАНАХ
-        </h2>
+        <h3>
+            Личный кабинет
+        </h3>
     </div>
 
-    <div class="row pt-3">
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Фильм</th>
-                <th scope="col">Формат</th>
-                <th scope="col">Зал</th>
-                <th scope="col">Цена, руб</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Бэтмен</td>
-                <td>2D</td>
-                <td>Больщой зал</td>
-                <td>220</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Кощей. Похититель</td>
-                <td>2D</td>
-                <td>Малый зал</td>
-                <td>200</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Асса</td>
-                <td>2D</td>
-                <td>Малый Зал</td>
-                <td>200</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+
+        <div class="row pt-3">
+
+        </div>
+        <div class="row float-right">
+            <button type="submit" class="btn btn-primary mt-3">Забронировать</button>
+        </div>
 
 </div>
 </body>
