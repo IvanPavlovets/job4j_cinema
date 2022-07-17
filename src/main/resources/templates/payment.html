@@ -23,19 +23,31 @@
 <body>
 <div class="container">
     <div class="row pt-3">
-        <p class="place-choise__text" id="scheme-comment" style="">
-            Подведите курсор мыши к месту на плане зала для бранирования места на сеанс
-        </p>
+        <div class="card" style="width: 50%">
+            <div class="card-header">
+                Из выпадающих списков выбереите ряд и место на фильм:
+                <b th:text="${film.name}"/>
+            </div>
+            <div class="card-body">
+                    <label for="row">Выбирите ряд</label>
+                    <select class="form-control" id="row" name="row">
+                    <option th:each="row : ${rows}"
+                            th:value="${row}"
+                            th:text="${row}">
+                    </option>
+                    </select>
+
+                    <label for="cell">Выбирите место</label>
+                    <select class="form-control" id="cell" name="cell">
+                    <option th:each="cell : ${cells}"
+                            th:value="${cell}"
+                            th:text="${cell}">
+                    </option>
+                    </select>
+                    <button type="submit" class="btn btn-primary mt-3">Оплатить</button>
+            </div>
+        </div>
     </div>
-
-        <div class="row pt-3">
-
-        </div>
-
-        <div class="row float-right">
-            <button type="submit" class="btn btn-primary mt-3">Оплатить</button>
-        </div>
-
 </div>
 </body>
 </html>

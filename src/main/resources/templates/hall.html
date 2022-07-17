@@ -39,272 +39,36 @@
 
     <div class="row pt-3">
         <h3>
-            Подведите курсор мыши к месту на плане зала для бранирования места на сеанс
+            Выбере фильм для бранирования места на сеанс
         </h3>
     </div>
+    <div class="row pt-3">
+        <table class="table table-hover">
+            <thead>
+            <!--<tr>-->
+                <!--<th scope="col">#</th>-->
+                <!--<th scope="col">Фильм</th>-->
+                <!--<th scope="col">Купить билет</th>-->
+            <!--</tr>-->
+            </thead>
+            <tbody>
+            <tr th:each="film: ${films}">
+                <td th:text="${film.id}"/>
+                </td>
+                <td>
+                    <span th:text="${film.name}"/></span>
+                </td>
+                <td>
+                    <!--<a class="btn btn-danger" th:href="@{/loginPage}" role="button">Отмена</a>-->
+                    <a class="btn btn-primary" th:href="@{|/payment/${film.id}|}" role="button">Забронировать</a>
+                    <!--<button type="submit" class="btn btn-outline-primary">Забронировать</button>-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
-    <form th:action="@{/createTicket}" method="POST">  <!--обработка формирования Ticket-->
-        <div class="row pt-3">
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th scope="col" style="width: 5rem;">#</th>
-                    <th scope="col">1 Место</th>
-                    <th scope="col">2 Место</th>
-                    <th scope="col">3 Место</th>
-                    <th scope="col">4 Место</th>
-                    <th scope="col">5 Место</th>
-                    <th scope="col">6 Место</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1 Ряд</th>
-                    <td>
-                        <div class="form-group">
-                            <label for="name">Имя</label>
-                            <input type="text" class="form-control" name="row" id="row">
-                        </div>
+    </div>
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="" id="inputPlace11" value="11">
-                            <label class="form-check-label" for="inputPlace11">ряд: 1; место: 1</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce12">
-                            <label class="form-check-label" for="isBought">ряд: 1; место: 2</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce13">
-                            <label class="form-check-label" for="isBought">ряд: 1; место: 3</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce14">
-                            <label class="form-check-label" for="isBought">ряд: 1; место: 4</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce15">
-                            <label class="form-check-label" for="isBought">ряд: 1; место: 5</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce16">
-                            <label class="form-check-label" for="isBought">ряд: 1; место: 6</label>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2 Ряд</th>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce21">
-                            <label class="form-check-label" for="isBought">ряд: 2; место: 1</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce22">
-                            <label class="form-check-label" for="isBought">ряд: 2; место: 2</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce23">
-                            <label class="form-check-label" for="isBought">ряд: 2; место: 3</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce24">
-                            <label class="form-check-label" for="isBought">ряд: 2; место: 4</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce25">
-                            <label class="form-check-label" for="isBought">ряд: 2; место: 5</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce26">
-                            <label class="form-check-label" for="isBought">ряд: 2; место: 6</label>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3 Ряд</th>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce31">
-                            <label class="form-check-label" for="isBought">ряд: 3; место: 1</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce32">
-                            <label class="form-check-label" for="isBought">ряд: 3; место: 2</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce33">
-                            <label class="form-check-label" for="isBought">ряд: 3; место: 3</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce34">
-                            <label class="form-check-label" for="isBought">ряд: 3; место: 4</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce35">
-                            <label class="form-check-label" for="isBought">ряд: 3; место: 5</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce36">
-                            <label class="form-check-label" for="isBought">ряд: 3; место: 6</label>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">4 Ряд</th>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce41">
-                            <label class="form-check-label" for="isBought">ряд: 4; место: 1</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce42">
-                            <label class="form-check-label" for="isBought">ряд: 4; место: 2</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce43">
-                            <label class="form-check-label" for="isBought">ряд: 4; место: 3</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce44">
-                            <label class="form-check-label" for="isBought">ряд: 4; место: 4</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce45">
-                            <label class="form-check-label" for="isBought">ряд: 4; место: 5</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce46">
-                            <label class="form-check-label" for="isBought">ряд: 4; место: 6</label>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">5 Ряд</th>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce51">
-                            <label class="form-check-label" for="isBought">ряд: 5; место: 1</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce52">
-                            <label class="form-check-label" for="isBought">ряд: 5; место: 2</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce53">
-                            <label class="form-check-label" for="isBought">ряд: 5; место: 3</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce54">
-                            <label class="form-check-label" for="isBought">ряд: 5; место: 4</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce55">
-                            <label class="form-check-label" for="palce55">ряд: 5; место: 5</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce56">
-                            <label class="form-check-label" for="palce56">ряд: 5; место: 6</label>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">6 Ряд</th>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce61">
-                            <label class="form-check-label" for="palce61">ряд: 6; место: 1</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce62">
-                            <label class="form-check-label" for="palce62">ряд: 6; место: 2</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce63">
-                            <label class="form-check-label" for="palce63">ряд: 6; место: 3</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce64">
-                            <label class="form-check-label" for="palce64">ряд: 6; место: 4</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce65">
-                            <label class="form-check-label" for="palce65">ряд: 6; место: 5</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-check">
-                            <input type="checkbox" name="isBought" class="form-check-input" id="palce66">
-                            <label class="form-check-label" for="palce66">ряд: 6; место: 6</label>
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="row float-right">
-            <button type="submit" class="btn btn-primary mt-3">Забронировать</button>
-        </div>
-    </form>
 </div>
 </body>
 </html>
