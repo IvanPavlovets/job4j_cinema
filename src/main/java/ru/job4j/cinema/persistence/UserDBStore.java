@@ -76,4 +76,25 @@ public class UserDBStore {
         return Optional.empty();
     }
 
+    /**
+     * Обновляет запись в БД.
+     * Поля старой записи по id меняеться на
+     * поля из переданого user.
+     * @param user
+     */
+    public Optional<User> update(User user) {
+        String updateQuery = "UPDATE users SET username = ?, email = ?, phone = ? WHERE id = ?";
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement(updateQuery)) {
+            ps.setString(1, user.getUserName());
+            ps.setString(2, user.getEmail());
+            ps.setString(3, user.getPhone());
+            ps.setInt(4, user.getId());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+        return Optional.ofNullable(user);
+    }
+
 }

@@ -22,32 +22,56 @@
 </head>
 <body>
 <div class="container">
-    <div class="row pt-3">
-        <div class="card" style="width: 50%">
-            <div class="card-header">
-                Из выпадающих списков выбереите ряд и место на фильм:
-                <b th:text="${film.name}"/>
-            </div>
-            <div class="card-body">
-                    <label for="row">Выбирите ряд</label>
-                    <select class="form-control" id="row" name="row">
-                    <option th:each="row : ${rows}"
-                            th:value="${row}"
-                            th:text="${row}">
-                    </option>
-                    </select>
 
-                    <label for="cell">Выбирите место</label>
-                    <select class="form-control" id="cell" name="cell">
-                    <option th:each="cell : ${cells}"
-                            th:value="${cell}"
-                            th:text="${cell}">
-                    </option>
-                    </select>
-                    <button type="submit" class="btn btn-primary mt-3">Оплатить</button>
+    <nav class="nav nav-tabs">
+        <a class="nav-item nav-link" th:href="@{/index}">Афиша</a>
+        <a class="nav-item nav-link active" href="#">Кинотеатр</a>
+        <a class="nav-item nav-link" th:href="@{/personlInfo}">Личный Кабинет</a>
+        <a class="nav-item nav-link" th:if="${user.userName == 'Гость'}" th:href="@{/loginPage}">
+            <span th:text="${user.userName}"></span>
+            <span> | Войти</span>
+        </a>
+        <a class="nav-item nav-link" th:if="${user.userName != 'Гость'}" th:href="@{/logout}">
+            <span th:text="${user.userName}"></span>
+            <span> | Выйти</span>
+        </a>
+    </nav>
+
+    <div class="row pt-3">
+        <div class="card" style="width: 60%">
+            <div class="card-header">
+                <h5>Информация о фильме</h5>
+            </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Сеанс</th>
+                        <th scope="col">Ряд</th>
+                        <th scope="col">Место</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td th:text="${film.name}"></td>
+                        <td th:text="${row}"></td>
+                        <td th:text="${cell}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            <div class="card-body">
+                <form th:action="@{/createTicket}" method="post">
+                    <input type="hidden" name="id" value="0">
+                    <input type="hidden" readonly class="form-control-plaintext" id="filmSession_id" name="filmSession_id" th:value="${film.id}">
+                    <input type="hidden" readonly class="form-control-plaintext" id="row" name="row" th:value="${row}">
+                    <input type="hidden" readonly class="form-control-plaintext" id="cell" name="cell" th:value="${cell}">
+                    <input type="hidden" readonly class="form-control-plaintext" id="user_id" name="user_id" th:value="${user.id}">
+
+                <button type="submit" class="btn btn-primary mt-3">Купить</button>
+                </form>
             </div>
         </div>
     </div>
+
 </div>
 </body>
 </html>

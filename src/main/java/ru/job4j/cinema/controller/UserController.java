@@ -3,10 +3,7 @@ package ru.job4j.cinema.controller;
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ru.job4j.cinema.model.User;
 import ru.job4j.cinema.service.UserService;
 
@@ -18,6 +15,9 @@ import java.util.Optional;
 @ThreadSafe
 public class UserController {
 
+    /**
+     * Работа с БД через слой Service.
+     */
     private final UserService userService;
 
     public UserController(UserService userService) {
@@ -26,7 +26,7 @@ public class UserController {
 
 
     /**
-     * Обрабатывает переход на главную страницу personalInfo.html
+     * Обрабатывает переход на страницу personalInfo.html
      * Spring создаст сам этот обьект и загрузит его данные
      * в предсавлении (html странице).
      * @param model
@@ -41,6 +41,7 @@ public class UserController {
             user.setUserName("Гость");
         }
         model.addAttribute("user", user);
+        model.addAttribute("tickets", userService.findUserTickets(user));
         return "personlInfo";
     }
 
@@ -61,6 +62,47 @@ public class UserController {
     }
 
     /**
+     * Метод перехода на обновления карточки
+     * пользователя. Передаються параметры
+     * выбранные ранее userName, userEmail.
+     * @param model
+     * @param name
+     * @param email
+     * @param fail
+     * @return String
+     */
+    @GetMapping("/formUpdateUser/{userName}/{userEmail}")
+    public String addUser(Model model,
+                          @PathVariable("userName") String name,
+                          @PathVariable("userEmail") String email,
+                          @RequestParam(name = "fail", required = false) Boolean fail) {
+        model.addAttribute("fail", fail != null);
+        Optional<User> userDb = userService.findUserByUserNameAndEmail(
+                name, email
+        );
+        model.addAttribute("user", userDb.get());
+        return "updateUser";
+    }
+
+    /**
+     * Метод обработки изменений в карточки пользователя
+     * @param user
+     * @param req
+     * @return String
+     */
+    @PostMapping("/updateUser")
+    public String updatePost(@ModelAttribute User user, HttpServletRequest req) {
+        Optional<User> updateUser = userService.update(user);
+        if (updateUser.isEmpty()) {
+            return "redirect:/formUpdateUser?fail=true";
+        }
+        HttpSession session = req.getSession();
+        session.setAttribute("user", updateUser.get());
+        return "redirect:/personlInfo";
+    }
+
+    /**
+     * Метод регистрации впервые.
      * Обрабатывает добавление данных
      * из полеей ввода в обьект user и
      * и последующеее сохранение в UserDB.
@@ -72,7 +114,7 @@ public class UserController {
      * @return String
      */
     @PostMapping("/registration")
-    public String registration(Model model, @ModelAttribute User user) {
+    public String registration(@ModelAttribute User user) {
         Optional<User> regUser = userService.add(user);
         if (regUser.isEmpty()) {
             return "redirect:/formAddUser?fail=true";
@@ -113,7 +155,7 @@ public class UserController {
      */
     @PostMapping("/login")
     public String login(@ModelAttribute User user, HttpServletRequest req) {
-        Optional<User> userDb = userService. findUserByUserNameAndEmail(
+        Optional<User> userDb = userService.findUserByUserNameAndEmail(
                 user.getUserName(), user.getEmail()
         );
         if (userDb.isEmpty()) {

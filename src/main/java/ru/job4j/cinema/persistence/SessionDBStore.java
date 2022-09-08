@@ -26,10 +26,7 @@ public class SessionDBStore {
 
     /**
      * Достает все значения из хранилища (БД)
-     * добавляються обьекты городов с полем id,
-     * название городов добавляется в слое сервисов.
-     *
-     * @return List<Post>
+     * @return List<Session>
      */
     public List<Session> findAllSession() {
         List<Session> sessions = new ArrayList<>();
@@ -50,6 +47,11 @@ public class SessionDBStore {
         return sessions;
     }
 
+    /**
+     * Метод ищет сеанс по id
+     * @param id
+     * @return сеанс
+     */
     public Optional<Session> findSessionById(int id) {
         Session session;
         try (Connection cn = pool.getConnection();
