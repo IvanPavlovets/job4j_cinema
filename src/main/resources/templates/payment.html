@@ -61,10 +61,10 @@
             <div class="card-body">
                 <form th:action="@{/createTicket}" method="post">
                     <input type="hidden" name="id" value="0">
-                    <input type="hidden" readonly class="form-control-plaintext" id="filmSession_id" name="filmSession_id" th:value="${film.id}">
+                    <input type="hidden" readonly class="form-control-plaintext" id="filmSessionId" name="filmSessionId" th:value="${film.id}">
                     <input type="hidden" readonly class="form-control-plaintext" id="row" name="row" th:value="${row}">
                     <input type="hidden" readonly class="form-control-plaintext" id="cell" name="cell" th:value="${cell}">
-                    <input type="hidden" readonly class="form-control-plaintext" id="user_id" name="user_id" th:value="${user.id}">
+                    <input type="hidden" readonly class="form-control-plaintext" id="userId" name="userId" th:value="${user.id}">
 
                 <button type="submit" class="btn btn-primary mt-3">Купить</button>
                 </form>

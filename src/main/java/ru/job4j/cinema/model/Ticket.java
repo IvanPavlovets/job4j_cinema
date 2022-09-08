@@ -8,26 +8,26 @@ import java.util.Objects;
  */
 public class Ticket {
     private int id;
-    private int filmSession_id; // сеанс
-    private int row; // ряд
-    private int cell; // место
-    private int user_id;
+    private int filmSessionId;
+    private int row;
+    private int cell;
+    private int userId;
     private Session session;
 
     public Ticket() {
         this.id = 0;
-        this.filmSession_id = 0;
+        this.filmSessionId = 0;
         this.row = 0;
         this.cell = 0;
-        this.user_id = 0;
+        this.userId = 0;
     }
 
-    public Ticket(int id, int filmSession_id, int row, int cell, int user_id) {
+    public Ticket(int id, int filmSession_id, int row, int cell, int userId) {
         this.id = id;
-        this.filmSession_id = filmSession_id;
+        this.filmSessionId = filmSession_id;
         this.row = row;
         this.cell = cell;
-        this.user_id = user_id;
+        this.userId = userId;
     }
 
     public int getId() {
@@ -38,12 +38,12 @@ public class Ticket {
         this.id = id;
     }
 
-    public int getFilmSession_id() {
-        return filmSession_id;
+    public int getFilmSessionId() {
+        return filmSessionId;
     }
 
-    public void setFilmSession_id(int filmSession_id) {
-        this.filmSession_id = filmSession_id;
+    public void setFilmSessionId(int filmSessionId) {
+        this.filmSessionId = filmSessionId;
     }
 
     public int getRow() {
@@ -62,12 +62,12 @@ public class Ticket {
         this.cell = cell;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public Session getSession() {
@@ -80,18 +80,22 @@ public class Ticket {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Ticket ticket = (Ticket) o;
-        return id == ticket.id &&
-                filmSession_id == ticket.filmSession_id &&
-                row == ticket.row &&
-                cell == ticket.cell &&
-                user_id == ticket.user_id;
+        return id == ticket.id
+                && filmSessionId == ticket.filmSessionId
+                && row == ticket.row
+                && cell == ticket.cell
+                && userId == ticket.userId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, filmSession_id, row, cell, user_id);
+        return Objects.hash(id, filmSessionId, row, cell, userId);
     }
 }

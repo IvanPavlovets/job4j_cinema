@@ -48,7 +48,7 @@ public class SessionService {
             for (Ticket ticket: tickets) {
                 if (seat.getRow() == ticket.getRow()
                         && seat.getCell() == ticket.getCell()
-                        && id == ticket.getFilmSession_id()) {
+                        && id == ticket.getFilmSessionId()) {
                     reservedSeats.add(seat);
                 }
             }

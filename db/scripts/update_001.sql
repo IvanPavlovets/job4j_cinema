@@ -15,5 +15,5 @@ CREATE TABLE if not exists ticket (
   session_id INT NOT NULL REFERENCES sessions(id),
   row INT NOT NULL,
   cell INT NOT NULL,
-  user_id INT NOT NULL REFERENCES users(id)
+  userId INT NOT NULL REFERENCES users(id)
 );

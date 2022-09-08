@@ -23,7 +23,7 @@ public class HallService {
     public HallService() {
         halls.putIfAbsent(1, new MovieHall(1, "Средний зал", 5, 6));
         halls.putIfAbsent(2, new MovieHall(2, "Малый зал", 3, 4));
-        halls.putIfAbsent(3, new MovieHall(3, "Большой Зал",6, 7));
+        halls.putIfAbsent(3, new MovieHall(3, "Большой Зал", 6, 7));
     }
 
 

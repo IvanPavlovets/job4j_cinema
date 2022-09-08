@@ -62,7 +62,7 @@ public class UserService {
         List<Ticket> tickets = new ArrayList<>(ticketService.findByUser(user));
         tickets.forEach(
                 ticket -> ticket.setSession(
-                        sessionService.findById(ticket.getFilmSession_id()).get()
+                        sessionService.findById(ticket.getFilmSessionId()).get()
                 )
         );
         return tickets;

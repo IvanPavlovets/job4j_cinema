@@ -35,10 +35,10 @@ public class TicketDBStore {
         String insertStmnt = "INSERT INTO ticket(session_id, row, cell, user_id) VALUES (?, ?, ?, ?)";
         try (Connection cn = pool.getConnection();
              PreparedStatement ps =  cn.prepareStatement(insertStmnt, PreparedStatement.RETURN_GENERATED_KEYS)) {
-            ps.setInt(1, ticket.getFilmSession_id());
+            ps.setInt(1, ticket.getFilmSessionId());
             ps.setInt(2, ticket.getRow());
             ps.setInt(3, ticket.getCell());
-            ps.setInt(4, ticket.getUser_id());
+            ps.setInt(4, ticket.getUserId());
             ps.execute();
             try (ResultSet id = ps.getGeneratedKeys()) {
                 if (id.next()) {

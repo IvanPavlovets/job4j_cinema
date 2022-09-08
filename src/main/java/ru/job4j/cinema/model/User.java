@@ -56,11 +56,15 @@ public class User {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         User user = (User) o;
-        return id == user.id && Objects.equals(userName, user.userName) &&
-                Objects.equals(email, user.email) && Objects.equals(phone, user.phone);
+        return id == user.id && Objects.equals(userName, user.userName)
+                && Objects.equals(email, user.email) && Objects.equals(phone, user.phone);
     }
 
     @Override
