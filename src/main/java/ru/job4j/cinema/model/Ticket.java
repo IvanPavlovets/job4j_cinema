@@ -22,9 +22,9 @@ public class Ticket {
         this.userId = 0;
     }
 
-    public Ticket(int id, int filmSession_id, int row, int cell, int userId) {
+    public Ticket(int id, int filmSessionId, int row, int cell, int userId) {
         this.id = id;
-        this.filmSessionId = filmSession_id;
+        this.filmSessionId = filmSessionId;
         this.row = row;
         this.cell = cell;
         this.userId = userId;
