@@ -47,9 +47,50 @@
 Как использовать
 =
 1. В самом начале работы приложения мы попадает на страницу авторизации:<br>
-
 ![Image of login](https://github.com/IvanPavlovets/job4j_cinema/blob/master/images/loginPage.png)<br>
 Варианты возможных дейсвий - **войти** под своей учетной записью или **перейти на страницу регистрацции**. <br>
 После входа под своей учетной записью на панели навигации появиться строка с именем учетно записи,<br>
 нажав на которую произойдет выход из учетной записи.<br>
+___
+
+2. Страница регистрации предлагает завести свою учетную запись:<br>
+
+![Image of registration](https://github.com/IvanPavlovets/job4j_cinema/blob/master/images/registration.png)<br>
+___
+
+3. Вкладка Афиша:<br>
+
+![Image of index](https://github.com/IvanPavlovets/job4j_cinema/blob/master/images/hall.png)<br>
+На этой странице показаны все сеансы системы:<br>
+ - название фильма.<br> 
+ - формат фильма.<br> 
+ - размер зала.<br> 
+ - цена билета.<br> 
+___
+
+4. Вкладка Кинотеатр - страница выбора фильма:<br>
+
+![Image of hall](https://github.com/IvanPavlovets/job4j_cinema/blob/master/images/hall.png)<br>
+На странице можно сделать выбор фильма с последующем формирование данных билета<br> 
+___
+
+5. Вкладка Кинотеатр - страница выбора ряда и места в конозале<br>
+
+![Image of selectSeat](https://github.com/IvanPavlovets/job4j_cinema/blob/master/images/seats.png)<br>
+На странице осуществляться выбор ряда и места<br> 
+___
+
+6. Вкладка Кинотеатр - страница с итоговой информацией<br>
+
+![Image of selectSeat](https://github.com/IvanPavlovets/job4j_cinema/blob/master/images/payment.png)<br>
+На странице осуществляться подтверждение выбранных ранее данных и происходит покупка билета<br> 
+___
+
+7. Вкладка Личный кабинет - итогавая страница перехода после покупки<br>
+
+![Image of personalInfo](https://github.com/IvanPavlovets/job4j_cinema/blob/master/images/personalInfo.png)<br>
+После покупки белета осуществляеться переход на вкладку личного кабинета:<br>
+ - личные данные пользователя.<br> 
+ - информация о купленых билетах.<br> 
+Также возможно **редактирование** личнных данных пользователя
 ___
