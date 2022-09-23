@@ -70,7 +70,7 @@ ___
 
 4. Вкладка Кинотеатр - страница выбора фильма:<br>
 
-![Image of hall](https://github.com/IvanPavlovets/job4j_cinema/blob/master/images/hall.png)<br>
+![Image of hall](https://github.com/IvanPavlovets/job4j_cinema/blob/master/images/afisha.png)<br>
 На странице можно сделать выбор фильма с последующем формирование данных билета<br> 
 ___
 
