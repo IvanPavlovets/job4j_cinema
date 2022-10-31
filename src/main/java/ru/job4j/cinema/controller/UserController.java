@@ -72,7 +72,7 @@ public class UserController {
      * @return String
      */
     @GetMapping("/formUpdateUser/{userName}/{userEmail}")
-    public String addUser(Model model,
+    public String formUpdateUser(Model model,
                           @PathVariable("userName") String name,
                           @PathVariable("userEmail") String email,
                           @RequestParam(name = "fail", required = false) Boolean fail) {
@@ -91,7 +91,7 @@ public class UserController {
      * @return String
      */
     @PostMapping("/updateUser")
-    public String updatePost(@ModelAttribute User user, HttpServletRequest req) {
+    public String updateUser(@ModelAttribute User user, HttpServletRequest req) {
         Optional<User> updateUser = userService.update(user);
         if (updateUser.isEmpty()) {
             return "redirect:/formUpdateUser?fail=true";
