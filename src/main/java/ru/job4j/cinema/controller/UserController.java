@@ -71,16 +71,17 @@ public class UserController {
      * @param fail
      * @return String
      */
-    @GetMapping("/formUpdateUser/{userName}/{userEmail}")
-    public String formUpdateUser(Model model,
-                          @PathVariable("userName") String name,
-                          @PathVariable("userEmail") String email,
+    @GetMapping("/formUpdateUser")
+    public String formUpdateUser(Model model, HttpSession session,
                           @RequestParam(name = "fail", required = false) Boolean fail) {
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            user = new User();
+            user.setUserName("Гость");
+        }
+        model.addAttribute("user", user);
+        model.addAttribute("editUser", user);
         model.addAttribute("fail", fail != null);
-        Optional<User> userDb = userService.findUserByUserNameAndEmail(
-                name, email
-        );
-        model.addAttribute("user", userDb.get());
         return "updateUser";
     }
 

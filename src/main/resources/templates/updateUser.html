@@ -23,13 +23,13 @@
     <div class="row pt-3">
         <div class="card" style="width: 70%">
             <div class="card-header">
-                Регистрация
+                Редактирование профиля
             </div>
             <div class="card-body">
                 <div th:if="${fail}" class="alert alert-danger" role="alert">
                     Пользователь с введенным email или телефоном уже зарегистрирован!
                 </div>
-                <form th:action="@{/updateUser}" method="POST" th:object="${user}">
+                <form th:action="@{/updateUser}" method="POST" th:object="${editUser}">
                     <div class="form-group">
                         <input type="hidden" name="id" th:field="*{id}"/>
                         <label for="userName">ФИО</label>
